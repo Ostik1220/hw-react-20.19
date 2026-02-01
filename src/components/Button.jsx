@@ -1,5 +1,6 @@
 import { Component, memo } from "react";
 import styled from "styled-components";
+import { useToggle } from "../hooks";
 
 const ButtonStyled = styled.button`
   display: block;
@@ -17,9 +18,16 @@ const ButtonStyled = styled.button`
 `;
 
 const Button = memo(({ onClick }) => {
+  const [isToggled, toggle] = useToggle(false);
+
+  const handleClick = () => {
+    toggle();
+    if (onClick) onClick();
+  };
+
   return (
-    <ButtonStyled type="button" onClick={onClick}>
-      Load More
+    <ButtonStyled type="button" onClick={handleClick}>
+      {isToggled ? "Loaded" : "Load More"}
     </ButtonStyled>
   );
 });

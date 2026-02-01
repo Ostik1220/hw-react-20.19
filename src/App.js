@@ -1,9 +1,15 @@
 import './App.css';
-import { Component, useState } from 'react';
+import { Component, use, useState } from 'react';
 import Searchbar from './components/Searchbar';
 import ImageGallery from './components/ImageGallery';
+import { useFavicon } from '@uidotdev/usehooks';
+
+
 
 const App = () => {
+useFavicon('')
+
+
   const [query, setQuery] = useState("");
   const searchCollector = (word) => {
     setQuery(word);

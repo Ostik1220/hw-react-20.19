@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "./Button";
 import Modal from "./Modal";
 import styled from "styled-components";
+import { useModal } from "../hooks";
 
 const Gallery = styled.ul`
     display: flex;
@@ -16,9 +17,7 @@ const Gallery = styled.ul`
 const ImageGallery = ({query})  => {
   const [gifs, setGifs] = useState([])
   const [page, setPage] = useState(1)
-  const [showModal, setShowModal] = useState(false)
-  const [modalImage, setModalImgae] = useState("")
-  const [modalTags, setModalTags] = useState("")
+  const { isOpen, modalData, openModal, closeModal } = useModal()
 
 
 useEffect(() => {
@@ -52,17 +51,7 @@ useEffect(() => {
     setPage(prev => prev + 1)
   }, []);
 
-  const openModal = useCallback((image, tags) => {
-    setShowModal(true)
-    setModalImgae(image)
-    setModalTags(tags)
-  }, []);
 
-  const closeModal = useCallback(() => {
-    setShowModal(false)
-    setModalImgae("")
-    setModalTags("")
-  }, []);
 
   return (<>
 <Gallery>
@@ -75,10 +64,10 @@ useEffect(() => {
                   {gifs.length > 0 && (
             <Button onClick={loadMore} />
           )}
-        {showModal && (
+        {isOpen && (
           <Modal
-            largeImageURL={modalImage}
-            tags={modalTags}
+            largeImageURL={modalData.image}
+            tags={modalData.tags}
             onClose={closeModal}
           />
         )}
