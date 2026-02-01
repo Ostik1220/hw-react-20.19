@@ -1,4 +1,4 @@
-// import { Component } from "react";
+import { Component, memo } from "react";
 import styled from "styled-components";
 
 const ButtonStyled = styled.button`
@@ -16,13 +16,13 @@ const ButtonStyled = styled.button`
     }
 `;
 
-const Button = ({ onClick }) => {
+const Button = memo(({ onClick }) => {
   return (
     <ButtonStyled type="button" onClick={onClick}>
       Load More
     </ButtonStyled>
   );
-} ;
+});
 
 export default Button;
 

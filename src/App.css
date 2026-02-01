@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  text-align: center;
+  background-image: url('./img/dvdify-animation-1765035886000.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}

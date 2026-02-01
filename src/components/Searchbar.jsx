@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ButtonStyled = styled.button`
   display: block;
-    margin: 20px auto;
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -14,6 +13,17 @@ const ButtonStyled = styled.button`
     &:hover {
       background-color: #0056b3;
     }
+`;
+
+const FormStyled = styled.form`
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px;
+  gap: 10px;
 `;
 
 const Searchbar = ({ collector }) => {
@@ -32,7 +42,7 @@ const Searchbar = ({ collector }) => {
 
   return (
       <header className="searchbar">
-<form className="form" onSubmit={handleCollect}>
+<FormStyled className="form" onSubmit={handleCollect}>
   <ButtonStyled type="submit">
     <span className="button-label">Search</span>
   </ButtonStyled>
@@ -43,7 +53,7 @@ const Searchbar = ({ collector }) => {
     autoFocus
     placeholder="Search images and photos"
   />
-</form>
+</FormStyled>
 </header>
   );
 }
